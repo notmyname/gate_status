@@ -1,5 +1,7 @@
 Generate a URL to see how successful the OpenStack CI gates have been.
 
+These graphs optimistically assume that no data == 100% success.
+
 Files:
  * graph_url: a formatted version of the graphite URL
  * build_page.py: makes a simple webpage, gate_status.html with the URL
