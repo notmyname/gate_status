@@ -2,6 +2,14 @@ Generate a URL to see how successful the OpenStack CI gates have been.
 
 These graphs optimistically assume that no data == 100% success.
 
+This big, bold red line is the chance that a newly-submitted patch has of
+passing the six main gate jobs, even if it is perfect code with no bugs. Since
+there are more than siz gate jobs, this is a best-case scenario.
+
+The calculation is done by time-bucketing the success rate of the individual
+jobs. Then these percentages are multiplied together to get the overall chance
+of success (gate failures are independent).
+
 Files:
  * graph_url: a formatted version of the graphite URL
  * build_page.py: makes a simple webpage, gate_status.html with the URL
