@@ -1,7 +1,7 @@
 http://graphite.openstack.org/render/?
 
-from=-1week
-&until=now
+from=-264hours
+&until=-18hours
 
 &height=400
 &width=800
@@ -35,7 +35,7 @@ color(
                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.SUCCESS,
                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})
             ),
-            '90min','avg'
+            '12hours','avg'
         ),
         'gate-tempest-dsvm-neutron'
     ),
@@ -50,7 +50,7 @@ color(
                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.SUCCESS,
                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})
             ),
-            '90min','avg'
+            '12hours','avg'
         ),
         'gate-tempest-dsvm-full'
     ),
@@ -65,7 +65,7 @@ color(
                 stats.zuul.pipeline.gate.job.gate-grenade-dsvm.SUCCESS,
                 sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})
             ),
-            '90min','avg'
+            '12hours','avg'
         ),
         'gate-grenade-dsvm'
     ),
@@ -80,7 +80,7 @@ color(
                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.SUCCESS,
                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})
             ),
-            '90min','avg'
+            '12hours','avg'
         ),
         'gate-tempest-dsvm-large-ops'
     ),
@@ -95,7 +95,7 @@ color(
                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.SUCCESS,
                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})
             ),
-            '90min','avg'
+            '12hours','avg'
         ),
         'gate-tempest-dsvm-neutron-large-ops'
     ),
@@ -110,7 +110,7 @@ color(
                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.SUCCESS,
                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})
             ),
-            '90min','avg'
+            '12hours','avg'
         ),
         'gate-tempest-dsvm-postgres-full'
     ),
@@ -128,27 +128,27 @@ color(
                             transformNull(smartSummarize(divideSeries(
                                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.SUCCESS,
                                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})
-                            ),'90min','avg'),1),
+                            ),'12hours','avg'),1),
                             transformNull(smartSummarize(divideSeries(
                                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.SUCCESS,
                                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})
-                            ),'90min','avg'),1),
+                            ),'12hours','avg'),1),
                             transformNull(smartSummarize(divideSeries(
                                 stats.zuul.pipeline.gate.job.gate-grenade-dsvm.SUCCESS,
                                 sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})
-                            ),'90min','avg'),1),
+                            ),'12hours','avg'),1),
                             transformNull(smartSummarize(divideSeries(
                                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.SUCCESS,
                                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})
-                            ),'90min','avg'),1),
+                            ),'12hours','avg'),1),
                             transformNull(smartSummarize(divideSeries(
                                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.SUCCESS,
                                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})
-                            ),'90min','avg'),1),
+                            ),'12hours','avg'),1),
                             transformNull(smartSummarize(divideSeries(
                                 stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.SUCCESS,
                                 sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})
-                            ),'90min','avg'),1)
+                            ),'12hours','avg'),1)
                         )
                     ),
                     1
