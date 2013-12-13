@@ -1,0 +1,162 @@
+http://graphite.openstack.org/render/?
+
+from=-1week
+&until=now
+
+&height=400
+&width=800
+
+&bgcolor=ffffff
+&fgcolor=000000
+
+&yMaxRight=100
+&yStepRight=20
+&yMinRight=0
+
+&yMaxLeft=100
+&yStepLeft=20
+&yMinLeft=0
+&yMin=0
+
+&drawNullAsZero=false
+
+&lineMode=staircase
+
+&vtitle=Per%20Job%20Success%20Rate
+&vtitleRight=Overall%20Success%20Chance
+
+&title=Recent%20Gate%20Success%20Rates
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})
+            ),
+            '90min','avg'
+        ),
+        'gate-tempest-dsvm-neutron'
+    ),
+    'blue'
+)
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})
+            ),
+            '90min','avg'
+        ),
+        'gate-tempest-dsvm-full'
+    ),
+    'green'
+)
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-grenade-dsvm.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})
+            ),
+            '90min','avg'
+        ),
+        'gate-grenade-dsvm'
+    ),
+    'orange'
+)
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})
+            ),
+            '90min','avg'
+        ),
+        'gate-tempest-dsvm-large-ops'
+    ),
+    'purple'
+)
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})
+            ),
+            '90min','avg'
+        ),
+        'gate-tempest-dsvm-neutron-large-ops'
+    ),
+    'brown'
+)
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})
+            ),
+            '90min','avg'
+        ),
+        'gate-tempest-dsvm-postgres-full'
+    ),
+    'aqua'
+)
+
+&target=
+color(
+    alias(
+        lineWidth(
+            secondYAxis(
+                asPercent(
+                    transformNull(
+                        multiplySeries(
+                            transformNull(smartSummarize(divideSeries(
+                                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.SUCCESS,
+                                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})
+                            ),'90min','avg'),1),
+                            transformNull(smartSummarize(divideSeries(
+                                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.SUCCESS,
+                                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})
+                            ),'90min','avg'),1),
+                            transformNull(smartSummarize(divideSeries(
+                                stats.zuul.pipeline.gate.job.gate-grenade-dsvm.SUCCESS,
+                                sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})
+                            ),'90min','avg'),1),
+                            transformNull(smartSummarize(divideSeries(
+                                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.SUCCESS,
+                                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})
+                            ),'90min','avg'),1),
+                            transformNull(smartSummarize(divideSeries(
+                                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.SUCCESS,
+                                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})
+                            ),'90min','avg'),1),
+                            transformNull(smartSummarize(divideSeries(
+                                stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.SUCCESS,
+                                sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})
+                            ),'90min','avg'),1)
+                        )
+                    ),
+                    1
+                )
+            ),
+            3
+        ),
+        'Overall%20Chance%20of%20a%20Patch%20Passing'
+    ),
+    'ff0000'
+)
