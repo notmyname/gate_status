@@ -1,0 +1,69 @@
+http://graphite.openstack.org/render/?
+
+from=midnight-8days
+&until=noon+tomorrow
+
+&height=400
+&width=800
+
+&bgcolor=ffffff
+&fgcolor=000000
+
+&yStepLeft=10
+&yMinLeft=0
+
+&drawNullAsZero=false
+
+&lineMode=staircase
+
+&vtitle=Count
+&vtitleRight=Gate%20Depth%20Change
+
+&title=Recent%20Gate%20Pressure
+
+&target=
+cactiStyle(color(
+        alias(
+            smartSummarize(
+                stats.gauges.zuul.pipeline.gate.current_changes,
+                '3hours','avg'
+            ),
+            'Gate%20Depth'
+        ),
+    'aqua'
+))
+
+&target=
+cactiStyle(color(
+        alias(
+            hitcount(
+                stats.gerrit.event.change-merged,
+                '3hours',alignToInterval=true
+            ),
+            'Patches%20Merged'
+        ),
+    'green'
+))
+
+&target=
+cactiStyle(color(
+    lineWidth(
+        alias(
+            secondYAxis(
+                diffSeries(
+                    smartSummarize(
+                        stats.gauges.zuul.pipeline.gate.current_changes,
+                        '3hours','avg'
+                    ),
+                    hitcount(
+                        stats.gerrit.event.change-merged,
+                        '3hours',alignToInterval=true
+                    )
+                )
+            ),
+            'Gate%20Pressure'
+        ),
+        2
+    ),
+    'ff0000'
+))
