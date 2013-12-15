@@ -9,7 +9,7 @@ from=midnight-8days
 &bgcolor=ffffff
 &fgcolor=000000
 
-&yStepRight=20
+&yStepRight=10
 &yMinRight=0
 
 &yMaxLeft=100
