@@ -22,10 +22,36 @@ from=midnight-8days
 
 &format=svg
 
+&areaMode=first
+
+&areaAlpha=.15
+
+&minorY=2
+
+&rightDashed=True
+
+&tz=UTC
+
 &vtitle=Success%20Rate
 &vtitleRight=Gate%20Depth
 
 &title=Recent%20Gate%20Success%20Rates
+
+&target=
+cactiStyle(
+    color(
+        alias(
+            secondYAxis(
+                smartSummarize(
+                    stats.gauges.zuul.pipeline.gate.current_changes,
+                    '6hours','avg'
+                )
+            ),
+            'Gate%20Depth'
+        ),
+    'aqua'
+    )
+)
 
 &target=
 color(
@@ -158,19 +184,3 @@ cactiStyle(color(
     ),
     'ff0000'
 ))
-
-&target=
-cactiStyle(
-    color(
-        alias(
-            secondYAxis(
-                smartSummarize(
-                    stats.gauges.zuul.pipeline.gate.current_changes,
-                    '6hours','avg'
-                )
-            ),
-            'Gate%20Depth'
-        ),
-    'aqua'
-    )
-)
