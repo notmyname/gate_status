@@ -4,7 +4,7 @@ from=midnight-14days
 &until=midnight+tomorrow
 
 &height=400
-&width=800
+&width=850
 
 &bgcolor=ffffff
 &fgcolor=000000
@@ -27,9 +27,14 @@ from=midnight-14days
 
 &areaAlpha=.15
 
-&minorY=3
+&minorY=1
+
+&minorGridLineColor=gray
+&majorGridLineColor=gray
 
 &tz=UTC
+
+&fontSize=10
 
 &vtitleRight=Success%20Rate
 &vtitle=Gate%20Queue%20Depth
