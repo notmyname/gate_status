@@ -20,6 +20,8 @@ from=midnight-8days
 
 &lineMode=staircase
 
+&format=svg
+
 &vtitle=Success%20Rate
 &vtitleRight=Gate%20Depth
 
