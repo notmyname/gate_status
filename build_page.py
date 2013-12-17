@@ -18,12 +18,17 @@ patch pass chance over the timescale of the entire graph.
 <p>
 The depth of the gate queue is also tracked. This allows two things: one, a
 comparison of the patch pass chance to the depth of the queue (e.g. "Is the
-patch pass chance high because the queue is empty?") and two, the ability to
-calculate the probability that the current gate queue will clear. To calculate
-the chance that the gate queue will clear, take the decimal representation of
-the patch pass chance and raise it to the depth of the gate queue. For example,
-a gate queue 10 deep, when combined with a patch pass chance of 85% has a
-19.69% chance of passing (100 * .85**10).
+patch pass chance shown as a high value because the queue isn't testing
+much?") and two, the ability to calculate the probability that the current gate
+queue will clear. To calculate the chance that the gate queue will clear, take
+the decimal representation of the patch pass chance and raise it to the depth
+of the gate queue. For example, a gate queue 10 deep, when combined with a
+patch pass chance of 85% has a 19.69% chance of passing (100 * .85**10).
+</p>
+<p>
+To be clear, the gate depth is the result of a low pass chance, not the cause.
+A low pass chance will cause more jobs to be rechecked and therefore keep
+patches in the gate longer, thus leading to a larger gate queue.
 </p>
 
 <h3>Methodology</h3>
