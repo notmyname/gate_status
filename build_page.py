@@ -12,6 +12,10 @@ Chance" is the starting point for the likelihood of that patch being merged
 into master.
 </p>
 <p>
+The "Patch Pass Chance Avg" (the bold orange line) is the moving average of the
+patch pass chance over the timescale of the entire graph.
+</p>
+<p>
 The depth of the gate queue is also tracked. This allows two things: one, a
 comparison of the patch pass chance to the depth of the queue (e.g. "Is the
 patch pass chance high because the queue is empty?") and two, the ability to
