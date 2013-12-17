@@ -1,5 +1,4 @@
 error_url = ''.join(x.strip() for x in open('error_rate_url').readlines())
-#pressure_url = ''.join(x.strip() for x in open('gate_pressure_url').readlines())
 
 msg = '''
 <h3>Explanation</h3>
@@ -7,9 +6,10 @@ msg = '''
 The "Patch Pass Chance" above (the bold red line) is the chance that
 a newly submitted patch has of passing the six tracked gate jobs,
 optimistically assuming that the patch is perfect and introduces no bugs. In
-other words, if you submit a new patch to the jenkins gate queue&mdash;whether a
-major new feature or a trivial doc spelling error&mdash;the "Patch Pass Chance" is
-the starting point for the likelihood of that patch being merged into master.
+other words, if you submit a new patch to the jenkins gate queue&mdash;whether
+a major new feature or a trivial doc spelling error&mdash;the "Patch Pass
+Chance" is the starting point for the likelihood of that patch being merged
+into master.
 </p>
 <p>
 The depth of the gate queue is also tracked. This allows two things: one, a
@@ -34,9 +34,12 @@ calculation is an accurate representation of the chance a patch has of landing.
 </p>
 '''
 
-page = '<html><head><title>Gate Success Rate</title></head><body><img src="' \
-       '%s">%s</body></html>' % (error_url, msg)
-#       '%s"><br><img src="%s"></body></html>' % (error_url, pressure_url)
+page = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center><img style="margin: 0 auto;" src="%s"></center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (error_url, msg)
 
 with open('gate_status.html', 'wb') as f:
     f.write(page)
