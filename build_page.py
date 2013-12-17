@@ -29,10 +29,10 @@ average (mean) value for that time slice. The gate job status success rate
 is the percent of successful runs divided by the sum of the successful and 
 unsuccessful runs in that time block. The "Patch Pass Chance" is the
 multiplication of the gate job pass percentages. Because each gate job failure
-is independent (ie a patch will fail if any of the gate jobs fails), this
+is independent (i.e. a patch will fail if any of the gate jobs fails), this
 calculation is an accurate representation of the chance a patch has of landing.
-Missing data points in the data (ie nothing happening) is optimistically
-counted as a 100% pass rate. Therefore the "Pass Pass Chance" calculated is
+Missing data points in the data (i.e. nothing happening) is optimistically
+counted as a 100% pass rate. Therefore the "Patch Pass Chance" calculated is
 the absolute best-case scenario, based on the status of the six tracked jobs.
 </p>
 <hr/>
