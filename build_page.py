@@ -13,7 +13,7 @@ into master.
 </p>
 <p>
 The depth of the gate queue is also tracked. This allows two things: one, a
-comparison of the patch pass chance to the depth of the queue (eg "Is the
+comparison of the patch pass chance to the depth of the queue (e.g. "Is the
 patch pass chance high because the queue is empty?") and two, the ability to
 calculate the probability that the current gate queue will clear. To calculate
 the chance that the gate queue will clear, take the decimal representation of
