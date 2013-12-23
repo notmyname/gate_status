@@ -181,7 +181,7 @@ color(
         )),
         'gate-grenade-dsvm'
     ),
-    'orange'
+    'pink'
 )
 
 &target=
