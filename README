@@ -11,10 +11,11 @@ jobs. Then these percentages are multiplied together to get the overall chance
 of success (gate failures are independent).
 
 Files:
- * graph_url: a formatted version of the graphite URL
+ * graph_template: a template version of the graphite URL
  * build_page.py: makes a simple webpage, gate_status.html with the URL
 
 Usage:
- * edit graph_url
+ * edit graph_template, if necessary
+ * change the template values in build_page.py
  * `python ./build_page.py`
  * open gate_status.html

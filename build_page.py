@@ -1,4 +1,16 @@
-error_url = ''.join(x.strip() for x in open('error_rate_url').readlines())
+import urllib
+
+format_dict = {
+    'HOWLONGAGO': '21days',
+    'TIMEBUCKET': '12hours',
+    'MOVINGAVGPERIOD': '14days',
+    'SUCCESS,FAILURE': '{SUCCESS,FAILURE}'
+}
+
+
+error_url = ''.join(x.strip() for x in open('graph_template').readlines())
+error_url = error_url.replace(' ', '%20')
+error_url = error_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
@@ -12,7 +24,7 @@ Chance" is the starting point for the likelihood of that patch being merged
 into master.
 </p>
 <p>
-The "Patch Pass Chance Avg" (the bold orange line) is the one week moving
+The "Patch Pass Chance Avg" (the bold orange line) is the two week moving
 average of the patch pass chance.
 </p>
 <p>
