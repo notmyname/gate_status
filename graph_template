@@ -42,17 +42,15 @@ from=midnight-{HOWLONGAGO}
 &title=Recent Gate Success Rates
 
 &target=
-cactiStyle(
-    color(
-        alias(
-            smartSummarize(
-                stats.gauges.zuul.pipeline.gate.current_changes,
-                '{TIMEBUCKET}','avg'
-            ),
-            'Gate Depth'
+color(
+    alias(
+        smartSummarize(
+            stats.gauges.zuul.pipeline.gate.current_changes,
+            '{TIMEBUCKET}','avg'
         ),
+        'Gate Depth'
+    ),
     'aqua'
-    )
 )
 
 &target=
@@ -92,7 +90,7 @@ cactiStyle(color(
             ),
             2
         )),
-        'Patch Pass Chance Avg'
+        'Patch Pass Chance Moving Avg'
     ),
     'orange'
 ))
