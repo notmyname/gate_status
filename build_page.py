@@ -1,9 +1,9 @@
 import urllib
 
 format_dict = {
-    'HOWLONGAGO': '21days',
-    'TIMEBUCKET': '12hours',
-    'MOVINGAVGPERIOD': '14days',
+    'HOWLONGAGO': '3weeks',
+    'TIMEBUCKET': '8hours',
+    'MOVINGAVGPERIOD': '5days',
     'SUCCESS,FAILURE': '{SUCCESS,FAILURE}'
 }
 
@@ -24,7 +24,7 @@ Chance" is the starting point for the likelihood of that patch being merged
 into master.
 </p>
 <p>
-The "Patch Pass Chance Avg" (the bold orange line) is the two week moving
+The "Patch Pass Chance Avg" (the bold orange line) is the five day moving
 average of the patch pass chance.
 </p>
 <p>
@@ -45,7 +45,7 @@ patches in the gate longer, thus leading to a larger gate queue.
 
 <h3>Methodology</h3>
 <p>
-The last two weeks are graphed by summarizing each 6-hour window into the
+The last three weeks are graphed by summarizing each 8-hour window into the
 average (mean) value for that time slice. The gate job status success rate
 is the percent of successful runs divided by the sum of the successful and 
 unsuccessful runs in that time block. The "Patch Pass Chance" is the
