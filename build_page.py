@@ -11,6 +11,9 @@ format_dict = {
 error_url = ''.join(x.strip() for x in open('graph_template').readlines())
 error_url = error_url.replace(' ', '%20')
 error_url = error_url.format(**format_dict)
+swift_error_url = ''.join(x.strip() for x in open('swift_graph_template').readlines())
+swift_error_url = swift_error_url.replace(' ', '%20')
+swift_error_url = swift_error_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
@@ -63,12 +66,27 @@ https://github.com/notmyname/gate_status</a>
 </p>
 '''
 
-page = '''
+common_page = '''
 <html><head><title>Gate Success Rate</title></head>
 <body style="width: 80%%">
-<center><img style="margin: 0 auto;" src="%s"></center>
+<center>
+<img style="margin: 0 auto;" src="%s">
+</center>
 <div style="margin: 0 10%%;">%s</div></body></html>
 ''' % (error_url, msg)
 
 with open('gate_status.html', 'wb') as f:
-    f.write(page)
+    f.write(common_page)
+
+swift_page = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center>
+<img style="margin: 0 auto;" src="%s">
+<img style="margin: 0 auto;" src="%s">
+</center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (error_url, swift_error_url, msg)
+
+with open('swift_gate_status.html', 'wb') as f:
+    f.write(swift_page)

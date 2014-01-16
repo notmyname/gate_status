@@ -1,0 +1,57 @@
+
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%">
+<center>
+<img style="margin: 0 auto;" src="http://graphite.openstack.org/render/?from=midnight-3weeks&until=midnight+tomorrow&height=400&width=850&bgcolor=ffffff&fgcolor=000000&yMaxLeft=100&yStepLeft=20&yMinLeft=0&yMaxRight=100&yStepRight=20&yMinRight=0&drawNullAsZero=false&lineMode=staircase&format=svg&areaMode=first&areaAlpha=.15&minorY=1&minorGridLineColor=gray&majorGridLineColor=gray&tz=UTC&fontSize=10&vtitleRight=Success%20Rate&vtitle=Gate%20Queue%20Depth&title=Recent%20Gate%20Success%20Rates&target=color(alias(smartSummarize(stats.gauges.zuul.pipeline.gate.current_changes,'12hours','avg'),'Gate%20Depth'),'aqua')&target=cactiStyle(color(alias(secondYAxis(lineWidth(asPercent(transformNull(multiplySeries(transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})),'5days'),1))),1),2)),'Patch%20Pass%20Chance%20Moving%20Avg'),'orange'))&target=cactiStyle(color(alias(secondYAxis(lineWidth(asPercent(transformNull(multiplySeries(transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})),'12hours','avg'),1))),1),3)),'Patch%20Pass%20Chance'),'ff0000'))&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})),'12hours','avg')),'gate-tempest-dsvm-neutron'),'blue')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})),'12hours','avg')),'gate-tempest-dsvm-full'),'green')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})),'12hours','avg')),'gate-grenade-dsvm'),'pink')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})),'12hours','avg')),'gate-tempest-dsvm-large-ops'),'purple')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})),'12hours','avg')),'gate-tempest-dsvm-neutron-large-ops'),'brown')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})),'12hours','avg')),'gate-tempest-dsvm-postgres-full'),'aqua')">
+<img style="margin: 0 auto;" src="http://graphite.openstack.org/render/?from=midnight-3weeks&until=midnight+tomorrow&height=400&width=850&bgcolor=ffffff&fgcolor=000000&yMaxLeft=100&yStepLeft=20&yMinLeft=0&yMaxRight=100&yStepRight=20&yMinRight=0&drawNullAsZero=false&lineMode=staircase&format=svg&areaMode=first&areaAlpha=.15&minorY=1&minorGridLineColor=gray&majorGridLineColor=gray&tz=UTC&fontSize=10&vtitleRight=Success%20Rate&vtitle=Gate%20Queue%20Depth&title=Swift%20Gate%20Jobs%20Recent%20Success%20Rates&target=color(alias(smartSummarize(stats.gauges.zuul.pipeline.gate.current_changes,'12hours','avg'),'Gate%20Depth'),'aqua')&target=cactiStyle(color(alias(secondYAxis(lineWidth(asPercent(transformNull(multiplySeries(transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-docs.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-docs.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-pep8.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-pep8.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-python26.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-python26.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-python27.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-python27.{SUCCESS,FAILURE})),'5days'),1),transformNull(movingAverage(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.{SUCCESS,FAILURE})),'5days'),1))),1),2)),'Swift%20Gate%20Jobs%20Chance%20Moving%20Average'),'orange'))&target=cactiStyle(color(alias(secondYAxis(lineWidth(asPercent(transformNull(multiplySeries(transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-docs.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-docs.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-pep8.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-pep8.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-python26.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-python26.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-python27.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-python27.{SUCCESS,FAILURE})),'12hours','avg'),1),transformNull(smartSummarize(divideSeries(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.{SUCCESS,FAILURE})),'12hours','avg'),1))),1),3)),'Swift%20Gate%20Jobs%20Chance'),'ff0000'))&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-swift-docs.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-docs.{SUCCESS,FAILURE})),'12hours','avg')),'gate-swift-docs'),'blue')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-swift-pep8.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-pep8.{SUCCESS,FAILURE})),'12hours','avg')),'gate-swift-pep8'),'green')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-swift-python26.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-python26.{SUCCESS,FAILURE})),'12hours','avg')),'gate-swift-python26'),'pink')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-swift-python27.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-python27.{SUCCESS,FAILURE})),'12hours','avg')),'gate-swift-python27'),'purple')&target=color(alias(secondYAxis(smartSummarize(asPercent(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.SUCCESS,sum(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.{SUCCESS,FAILURE})),'12hours','avg')),'gate-swift-dsvm-functional'),'brown')">
+</center>
+<div style="margin: 0 10%;">
+<h3>Explanation</h3>
+<p>
+The "Patch Pass Chance" above (the bold red line) is the chance that
+a newly submitted patch has of passing the six tracked gate jobs,
+optimistically assuming that the patch is perfect and introduces no bugs. In
+other words, if you submit a new patch to the Jenkins gate queue&mdash;whether
+a major new feature or a trivial doc spelling error&mdash;the "Patch Pass
+Chance" is the starting point for the likelihood of that patch being merged
+into master.
+</p>
+<p>
+The "Patch Pass Chance Avg" (the bold orange line) is the five day moving
+average of the patch pass chance.
+</p>
+<p>
+The depth of the gate queue is also tracked. This allows two things: one, a
+comparison of the patch pass chance to the depth of the queue (e.g. "Is the
+patch pass chance shown as a high value because the queue isn't testing
+much?") and two, the ability to calculate the probability that the current gate
+queue will clear. To calculate the chance that the gate queue will clear, take
+the decimal representation of the patch pass chance and raise it to the depth
+of the gate queue. For example, a gate queue 10 deep, when combined with a
+patch pass chance of 85% has a 19.69% chance of passing (100 * .85**10).
+</p>
+<p>
+To be clear, the gate depth is the result of a low pass chance, not the cause.
+A low pass chance will cause more jobs to be rechecked and therefore keep
+patches in the gate longer, thus leading to a larger gate queue.
+</p>
+
+<h3>Methodology</h3>
+<p>
+The last three weeks are graphed by summarizing each 12-hour window into the
+average (mean) value for that time slice. The gate job status success rate
+is the percent of successful runs divided by the sum of the successful and 
+unsuccessful runs in that time block. The "Patch Pass Chance" is the
+multiplication of the gate job pass percentages. Because each gate job failure
+is independent (i.e. a patch will fail if any of the gate jobs fails), this
+calculation is an accurate representation of the chance a patch has of landing.
+Missing data points in the data (i.e. nothing happening) is optimistically
+counted as a 100% pass rate. Therefore the "Patch Pass Chance" calculated is
+the absolute best-case scenario, based on the status of the six tracked jobs.
+</p>
+<hr/>
+<p style="font-size: 80%">Source for generating this page is at
+<a href="https://github.com/notmyname/gate_status">
+https://github.com/notmyname/gate_status</a>
+</p>
+</div></body></html>
