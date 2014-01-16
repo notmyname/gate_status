@@ -17,6 +17,12 @@ swift_error_url = swift_error_url.format(**format_dict)
 recheck_graph_url = ''.join(x.strip() for x in open('recheck_count_template').readlines())
 recheck_graph_url = recheck_graph_url.replace(' ', '%20')
 recheck_graph_url = recheck_graph_url.format(**format_dict)
+neutron_graph_url = ''.join(x.strip() for x in open('neutron_graph_template').readlines())
+neutron_graph_url = neutron_graph_url.replace(' ', '%20')
+neutron_graph_url = neutron_graph_url.format(**format_dict)
+nova_graph_url = ''.join(x.strip() for x in open('nova_graph_template').readlines())
+nova_graph_url = nova_graph_url.replace(' ', '%20')
+nova_graph_url = nova_graph_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
@@ -99,3 +105,31 @@ swift_page = '''
 
 with open('swift_gate_status.html', 'wb') as f:
     f.write(swift_page)
+
+neutron = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center>
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+</center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (error_url, recheck_graph_url, neutron_graph_url, msg)
+
+with open('neutron_gate_status.html', 'wb') as f:
+    f.write(neutron)
+
+nova = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center>
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+</center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (error_url, recheck_graph_url, nova_graph_url, msg)
+
+with open('nova_gate_status.html', 'wb') as f:
+    f.write(nova)
