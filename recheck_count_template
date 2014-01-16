@@ -1,0 +1,47 @@
+http://graphite.openstack.org/render/?
+
+from=midnight-{HOWLONGAGO}
+&until=midnight+tomorrow
+
+&height=400
+&width=850
+
+&bgcolor=ffffff
+&fgcolor=000000
+
+&drawNullAsZero=false
+
+&lineMode=staircase
+
+&format=svg
+
+&areaAlpha=.15
+
+&minorY=1
+
+&minorGridLineColor=gray
+&majorGridLineColor=gray
+
+&tz=UTC
+
+&fontSize=10
+
+&title=Average Number of Gate Resets
+
+&target=
+cactiStyle(color(
+    alias(
+        divideSeries(
+            sumSeries(hitcount(
+                stats.zuul.pipeline.gate.job.gate-*-pep8.{SUCCESS,FAILURE},
+                '{TIMEBUCKET}',alignToInterval=true
+            )),
+            hitcount(
+                stats.gerrit.event.change-merged,
+                '{TIMEBUCKET}',alignToInterval=true
+            )
+        ),
+        'average gate resets'
+    ),
+    'orange'
+))

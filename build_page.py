@@ -14,6 +14,9 @@ error_url = error_url.format(**format_dict)
 swift_error_url = ''.join(x.strip() for x in open('swift_graph_template').readlines())
 swift_error_url = swift_error_url.replace(' ', '%20')
 swift_error_url = swift_error_url.format(**format_dict)
+recheck_graph_url = ''.join(x.strip() for x in open('recheck_count_template').readlines())
+recheck_graph_url = recheck_graph_url.replace(' ', '%20')
+recheck_graph_url = recheck_graph_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
@@ -59,6 +62,10 @@ Missing data points in the data (i.e. nothing happening) is optimistically
 counted as a 100% pass rate. Therefore the "Patch Pass Chance" calculated is
 the absolute best-case scenario, based on the status of the six tracked jobs.
 </p>
+<p>
+The recheck count is calculated by taking the total number of gate-*-pep8 jobs
+run and dividing it by the number of patches merged.
+</p>
 <hr/>
 <p style="font-size: 80%">Source for generating this page is at
 <a href="https://github.com/notmyname/gate_status">
@@ -70,10 +77,11 @@ common_page = '''
 <html><head><title>Gate Success Rate</title></head>
 <body style="width: 80%%">
 <center>
-<img style="margin: 0 auto;" src="%s">
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, msg)
+''' % (error_url, recheck_graph_url, msg)
 
 with open('gate_status.html', 'wb') as f:
     f.write(common_page)
@@ -82,11 +90,12 @@ swift_page = '''
 <html><head><title>Gate Success Rate</title></head>
 <body style="width: 80%%">
 <center>
-<img style="margin: 0 auto;" src="%s">
-<img style="margin: 0 auto;" src="%s">
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, swift_error_url, msg)
+''' % (error_url, recheck_graph_url, swift_error_url, msg)
 
 with open('swift_gate_status.html', 'wb') as f:
     f.write(swift_page)
