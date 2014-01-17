@@ -26,6 +26,9 @@ nova_graph_url = nova_graph_url.format(**format_dict)
 solum_graph_url = ''.join(x.strip() for x in open('solum_graph_template').readlines())
 solum_graph_url = solum_graph_url.replace(' ', '%20')
 solum_graph_url = solum_graph_url.format(**format_dict)
+cinder_graph_url = ''.join(x.strip() for x in open('cinder_graph_template').readlines())
+cinder_graph_url = cinder_graph_url.replace(' ', '%20')
+cinder_graph_url = cinder_graph_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
@@ -113,7 +116,7 @@ swift_page = '''
 <img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, recheck_graph_url, swift_error_url, msg)
+''' % (error_url, swift_error_url, recheck_graph_url, msg)
 
 with open('swift_gate_status.html', 'wb') as f:
     f.write(swift_page)
@@ -127,7 +130,7 @@ neutron = '''
 <img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, recheck_graph_url, neutron_graph_url, msg)
+''' % (error_url, neutron_graph_url, recheck_graph_url, msg)
 
 with open('neutron_gate_status.html', 'wb') as f:
     f.write(neutron)
@@ -141,7 +144,7 @@ nova = '''
 <img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, recheck_graph_url, nova_graph_url, msg)
+''' % (error_url, nova_graph_url, recheck_graph_url, msg)
 
 with open('nova_gate_status.html', 'wb') as f:
     f.write(nova)
@@ -158,3 +161,18 @@ solum = '''
 
 with open('solum_gate_status.html', 'wb') as f:
     f.write(solum)
+
+
+cinder = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center>
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+</center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (error_url, cinder_graph_url, recheck_graph_url, msg)
+
+with open('cinder_gate_status.html', 'wb') as f:
+    f.write(cinder)

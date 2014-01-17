@@ -1,0 +1,182 @@
+http://graphite.openstack.org/render/?
+
+from=midnight-{HOWLONGAGO}
+&until=midnight+tomorrow
+
+&height=400
+&width=850
+
+&bgcolor=ffffff
+&fgcolor=000000
+
+&yMaxLeft=100
+&yStepLeft=20
+&yMinLeft=0
+
+&yMaxRight=100
+&yStepRight=20
+&yMinRight=0
+
+&drawNullAsZero=false
+
+&lineMode=staircase
+
+&format=svg
+
+&areaMode=first
+
+&areaAlpha=.15
+
+&minorY=1
+
+&minorGridLineColor=gray
+&majorGridLineColor=gray
+
+&tz=UTC
+
+&fontSize=10
+
+&vtitleRight=Success Rate
+&vtitle=Gate Queue Depth
+
+&title=Cinder Gate Jobs Recent Success Rates
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            stats.gauges.zuul.pipeline.gate.current_changes,
+            '{TIMEBUCKET}','avg'
+        ),
+        'Gate Depth'
+    ),
+    'aqua'
+)
+
+&target=
+cactiStyle(color(
+    alias(
+        secondYAxis(lineWidth(
+            asPercent(
+                transformNull(
+                    multiplySeries(
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-docs.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-docs.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-pep8.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-pep8.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-python26.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-python26.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-python27.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-python27.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1)
+                    )
+                ),
+                1
+            ),
+            2
+        )),
+        'Cinder Gate Jobs Chance Moving Average'
+    ),
+    'orange'
+))
+
+&target=
+cactiStyle(color(
+    alias(
+        secondYAxis(lineWidth(
+            asPercent(
+                transformNull(
+                    multiplySeries(
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-docs.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-docs.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-pep8.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-pep8.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-python26.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-python26.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-cinder-python27.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-cinder-python27.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1)
+                    )
+                ),
+                1
+            ),
+            3
+        )),
+        'Cinder Gate Jobs Chance'
+    ),
+    'ff0000'
+))
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-cinder-docs.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-cinder-docs.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-cinder-docs'
+    ),
+    'blue'
+)
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-cinder-pep8.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-cinder-pep8.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-cinder-pep8'
+    ),
+    'green'
+)
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-cinder-python26.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-cinder-python26.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-cinder-python26'
+    ),
+    'pink'
+)
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-cinder-python27.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-cinder-python27.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-cinder-python27'
+    ),
+    'purple'
+)
