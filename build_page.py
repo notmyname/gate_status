@@ -218,10 +218,9 @@ marconi = '''
 <center>
 <img style="margin: 0 auto;" src="%s"><br />
 <img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, marconi_graph_url, recheck_graph_url, msg)
+''' % (marconi_graph_url, recheck_graph_url, msg)
 
 with open('marconi_gate_status.html', 'wb') as f:
     f.write(marconi)
