@@ -78,9 +78,11 @@ counted as a 100% pass rate. Therefore the "Patch Pass Chance" calculated is
 the absolute best-case scenario, based on the status of the six tracked jobs.
 </p>
 <p>
-The gate resets count is calculated by taking the total number of runs for a
-job that runs for every gate job but not check jobs and divids it by the
-number of patches merged.
+The gate resets count is calculated by taking the total number of runs of
+pep8 jobs, divides that by 2 (since they run for check and gate) and then
+dividing the integral of that number by the integral of the number of jobs
+that have merged. This is an experiment, and I don't think it's too accurate
+right now.
 </p>
 <hr/>
 <p style="font-size: 80%">Source for generating this page is at
