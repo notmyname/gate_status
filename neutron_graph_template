@@ -60,40 +60,6 @@ cactiStyle(color(
             asPercent(
                 transformNull(
                     multiplySeries(
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-neutron-docs.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-neutron-docs.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-neutron-pep8.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-neutron-pep8.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-neutron-python26.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-neutron-python26.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-neutron-python27.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-neutron-python27.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1)
-                    )
-                ),
-                1
-            ),
-            2
-        )),
-        'Neutron Gate Jobs Chance Moving Average'
-    ),
-    'orange'
-))
-
-&target=
-cactiStyle(color(
-    alias(
-        secondYAxis(lineWidth(
-            asPercent(
-                transformNull(
-                    multiplySeries(
                         transformNull(smartSummarize(divideSeries(
                             stats.zuul.pipeline.gate.job.gate-neutron-docs.SUCCESS,
                             sum(stats.zuul.pipeline.gate.job.gate-neutron-docs.{SUCCESS,FAILURE})

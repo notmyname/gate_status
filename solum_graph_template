@@ -60,52 +60,6 @@ cactiStyle(color(
             asPercent(
                 transformNull(
                     multiplySeries(
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-solum-docs.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-solum-docs.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-solum-pep8.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-solum-pep8.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-solum-python26.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-solum-python26.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-solum-python27.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-solum-python27.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-solum-python33.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-solum-python33.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-solum-pypy.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-solum-pypy.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1)
-                    )
-                ),
-                1
-            ),
-            2
-        )),
-        'Solum Gate Jobs Chance Moving Average'
-    ),
-    'orange'
-))
-
-&target=
-cactiStyle(color(
-    alias(
-        secondYAxis(lineWidth(
-            asPercent(
-                transformNull(
-                    multiplySeries(
                         transformNull(smartSummarize(divideSeries(
                             stats.zuul.pipeline.gate.job.gate-solum-docs.SUCCESS,
                             sum(stats.zuul.pipeline.gate.job.gate-solum-docs.{SUCCESS,FAILURE})

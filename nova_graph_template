@@ -60,40 +60,6 @@ cactiStyle(color(
             asPercent(
                 transformNull(
                     multiplySeries(
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-nova-docs.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-nova-docs.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-nova-pep8.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-nova-pep8.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-nova-python26.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-nova-python26.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1),
-                        transformNull(movingAverage(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-nova-python27.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-nova-python27.{SUCCESS,FAILURE})
-                        ),'{MOVINGAVGPERIOD}'),1)
-                    )
-                ),
-                1
-            ),
-            2
-        )),
-        'Nova Gate Jobs Chance Moving Average'
-    ),
-    'orange'
-))
-
-&target=
-cactiStyle(color(
-    alias(
-        secondYAxis(lineWidth(
-            asPercent(
-                transformNull(
-                    multiplySeries(
                         transformNull(smartSummarize(divideSeries(
                             stats.zuul.pipeline.gate.job.gate-nova-docs.SUCCESS,
                             sum(stats.zuul.pipeline.gate.job.gate-nova-docs.{SUCCESS,FAILURE})
