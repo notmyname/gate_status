@@ -29,6 +29,9 @@ solum_graph_url = solum_graph_url.format(**format_dict)
 cinder_graph_url = ''.join(x.strip() for x in open('cinder_graph_template').readlines())
 cinder_graph_url = cinder_graph_url.replace(' ', '%20')
 cinder_graph_url = cinder_graph_url.format(**format_dict)
+marconi_graph_url = ''.join(x.strip() for x in open('marconi_graph_template').readlines())
+marconi_graph_url = marconi_graph_url.replace(' ', '%20')
+marconi_graph_url = marconi_graph_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
@@ -128,10 +131,12 @@ all_page = '''
 <img style="margin: 0 auto;" src="%s"><br />
 <img style="margin: 0 auto;" src="%s"><br />
 <img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
 ''' % (error_url, swift_error_url, neutron_graph_url, nova_graph_url,
-       solum_graph_url, cinder_graph_url, recheck_graph_url, msg)
+       cinder_graph_url, marconi_graph_url, solum_graph_url, recheck_graph_url,
+       msg)
 
 with open('all_gate_status.html', 'wb') as f:
     f.write(all_page)
@@ -205,3 +210,18 @@ cinder = '''
 
 with open('cinder_gate_status.html', 'wb') as f:
     f.write(cinder)
+
+
+marconi = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center>
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+</center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (error_url, marconi_graph_url, recheck_graph_url, msg)
+
+with open('marconi_gate_status.html', 'wb') as f:
+    f.write(marconi)
