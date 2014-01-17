@@ -32,7 +32,7 @@ from=midnight-{HOWLONGAGO}
 cactiStyle(color(
     alias(
         divideSeries(
-            integral(hitcount(
+            hitcount(
                 sumSeries(
                     scale(
                         stats.zuul.pipeline.gate.job.gate-*-pep8.{SUCCESS,FAILURE},
@@ -40,11 +40,11 @@ cactiStyle(color(
                     )
                 ),
                 '{TIMEBUCKET}',alignToInterval=true
-            )),
-            integral(hitcount(
+            ),
+            hitcount(
                 stats.gerrit.event.change-merged,
                 '{TIMEBUCKET}',alignToInterval=true
-            ))
+            )
         ),
         'average gate resets'
     ),

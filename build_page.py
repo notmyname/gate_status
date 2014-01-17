@@ -33,6 +33,12 @@ cinder_graph_url = cinder_graph_url.format(**format_dict)
 msg = '''
 <h3>Explanation</h3>
 <p>
+The purpose of these graphs are to report what's been going on and to give
+OpenStack contributors a narrow time window in which to look for errors.
+Importantly, these graphs are not explaining why something is or isn't passing.
+These graphs only report if something is or is not passing.
+</p>
+<p>
 The "Patch Pass Chance" above (the bold red line) is the chance that
 a newly submitted patch has of passing the six tracked gate jobs,
 optimistically assuming that the patch is perfect and introduces no bugs. In
@@ -54,6 +60,11 @@ queue will clear. To calculate the chance that the gate queue will clear, take
 the decimal representation of the patch pass chance and raise it to the depth
 of the gate queue. For example, a gate queue 10 deep, when combined with a
 patch pass chance of 85% has a 19.69% chance of passing (100 * .85**10).
+</p>
+<p>
+Note that the gate-*-{docs,pep8,python26,python27} jobs run in the zuul check
+queue as well as the gate queue, so a failure reported in these may not
+indicate a gate-blocking bug.
 </p>
 <p>
 To be clear, the gate depth is the result of a low pass chance, not the cause.
@@ -83,9 +94,8 @@ the absolute best-case scenario, based on the status of the six tracked jobs.
 <p>
 The gate resets count is calculated by taking the total number of runs of
 pep8 jobs, divides that by 2 (since they run for check and gate) and then
-dividing the integral of that number by the integral of the number of jobs
-that have merged. This is an experiment, and I don't think it's too accurate
-right now.
+dividing that number by the number of patches that have merged. This is an
+experiment, and I don't think it's too accurate right now, but it is a guide.
 </p>
 <hr/>
 <p style="font-size: 80%">Source for generating this page is at
