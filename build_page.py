@@ -107,6 +107,25 @@ common_page = '''
 with open('gate_status.html', 'wb') as f:
     f.write(common_page)
 
+all_page = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center>
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+</center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (error_url, swift_error_url, neutron_graph_url, nova_graph_url,
+       solum_graph_url, cinder_graph_url, recheck_graph_url, msg)
+
+with open('all_gate_status.html', 'wb') as f:
+    f.write(all_page)
+
 swift_page = '''
 <html><head><title>Gate Success Rate</title></head>
 <body style="width: 80%%">
