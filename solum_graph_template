@@ -1,0 +1,254 @@
+http://graphite.openstack.org/render/?
+
+from=midnight-{HOWLONGAGO}
+&until=midnight+tomorrow
+
+&height=400
+&width=850
+
+&bgcolor=ffffff
+&fgcolor=000000
+
+&yMaxLeft=100
+&yStepLeft=20
+&yMinLeft=0
+
+&yMaxRight=100
+&yStepRight=20
+&yMinRight=0
+
+&drawNullAsZero=false
+
+&lineMode=staircase
+
+&format=svg
+
+&areaMode=first
+
+&areaAlpha=.15
+
+&minorY=1
+
+&minorGridLineColor=gray
+&majorGridLineColor=gray
+
+&tz=UTC
+
+&fontSize=10
+
+&vtitleRight=Success Rate
+&vtitle=Gate Queue Depth
+
+&title=Solum Gate Jobs Recent Success Rates
+
+&target=
+color(
+    alias(
+        smartSummarize(
+            stats.gauges.zuul.pipeline.gate.current_changes,
+            '{TIMEBUCKET}','avg'
+        ),
+        'Gate Depth'
+    ),
+    'aqua'
+)
+
+&target=
+cactiStyle(color(
+    alias(
+        secondYAxis(lineWidth(
+            asPercent(
+                transformNull(
+                    multiplySeries(
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-docs.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-docs.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-pep8.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-pep8.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-python26.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-python26.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-python27.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-python27.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-python33.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-python33.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-pypy.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-pypy.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1)
+                    )
+                ),
+                1
+            ),
+            2
+        )),
+        'Solum Gate Jobs Chance Moving Average'
+    ),
+    'orange'
+))
+
+&target=
+cactiStyle(color(
+    alias(
+        secondYAxis(lineWidth(
+            asPercent(
+                transformNull(
+                    multiplySeries(
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-docs.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-docs.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-pep8.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-pep8.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-python26.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-python26.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-python27.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-python27.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-python33.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-python33.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-pypy.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-pypy.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(smartSummarize(divideSeries(
+                            stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.SUCCESS,
+                            sum(stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}','avg'),1)
+                    )
+                ),
+                1
+            ),
+            3
+        )),
+        'Solum Gate Jobs Chance'
+    ),
+    'ff0000'
+))
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-solum-docs.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-solum-docs.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-solum-docs'
+    ),
+    'blue'
+)
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-solum-pep8.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-solum-pep8.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-solum-pep8'
+    ),
+    'green'
+)
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-solum-python26.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-solum-python26.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-solum-python26'
+    ),
+    'pink'
+)
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-solum-python27.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-solum-python27.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-solum-python27'
+    ),
+    'purple'
+)
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-solum-python33.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-solum-python33.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-solum-python33'
+    ),
+    'brown'
+)
+
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-solum-pypy.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-solum-pypy.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-solum-pypy'
+    ),
+    'aqua'
+)
+
+
+
+&target=
+color(
+    alias(
+        secondYAxis(smartSummarize(
+            asPercent(
+                stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.SUCCESS,
+                sum(stats.zuul.pipeline.gate.job.gate-solum-devstack-dsvm.{SUCCESS,FAILURE})
+            ),
+            '{TIMEBUCKET}','avg'
+        )),
+        'gate-solum-devstack-dsvm'
+    ),
+    'black'
+)

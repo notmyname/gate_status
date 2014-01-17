@@ -23,6 +23,9 @@ neutron_graph_url = neutron_graph_url.format(**format_dict)
 nova_graph_url = ''.join(x.strip() for x in open('nova_graph_template').readlines())
 nova_graph_url = nova_graph_url.replace(' ', '%20')
 nova_graph_url = nova_graph_url.format(**format_dict)
+solum_graph_url = ''.join(x.strip() for x in open('solum_graph_template').readlines())
+solum_graph_url = solum_graph_url.replace(' ', '%20')
+solum_graph_url = solum_graph_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
@@ -54,6 +57,12 @@ To be clear, the gate depth is the result of a low pass chance, not the cause.
 A low pass chance will cause more jobs to be rechecked and therefore keep
 patches in the gate longer, thus leading to a larger gate queue.
 </p>
+<p>
+The "Gate Resets" graph is an attempt to track the efficiency of the zuul
+pipeline scheduler. An ideal value is 1. Any number above that means that
+jobs before it in the gate queue failed and caused zuul to rerun the jobs for
+the patch set.
+</p>
 
 <h3>Methodology</h3>
 <p>
@@ -69,8 +78,9 @@ counted as a 100% pass rate. Therefore the "Patch Pass Chance" calculated is
 the absolute best-case scenario, based on the status of the six tracked jobs.
 </p>
 <p>
-The recheck count is calculated by taking the total number of gate-*-pep8 jobs
-run and dividing it by the number of patches merged.
+The gate resets count is calculated by taking the total number of runs for a
+job that runs for every gate job but not check jobs and divids it by the
+number of patches merged.
 </p>
 <hr/>
 <p style="font-size: 80%">Source for generating this page is at
@@ -133,3 +143,16 @@ nova = '''
 
 with open('nova_gate_status.html', 'wb') as f:
     f.write(nova)
+
+solum = '''
+<html><head><title>Gate Success Rate</title></head>
+<body style="width: 80%%">
+<center>
+<img style="margin: 0 auto;" src="%s"><br />
+<img style="margin: 0 auto;" src="%s"><br />
+</center>
+<div style="margin: 0 10%%;">%s</div></body></html>
+''' % (solum_graph_url, recheck_graph_url, msg)
+
+with open('solum_gate_status.html', 'wb') as f:
+    f.write(solum)

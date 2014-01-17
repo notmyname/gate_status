@@ -39,7 +39,7 @@ from=midnight-{HOWLONGAGO}
 &vtitleRight=Success Rate
 &vtitle=Gate Queue Depth
 
-&title=Swift Gate Jobs Recent Success Rates
+&title=Nova Gate Jobs Recent Success Rates
 
 &target=
 color(
@@ -116,7 +116,7 @@ cactiStyle(color(
             ),
             3
         )),
-        'Swift Gate Jobs Chance'
+        'Nova Gate Jobs Chance'
     ),
     'ff0000'
 ))
