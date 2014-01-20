@@ -6,8 +6,8 @@ from=midnight-{SIMPLEHOWLONGAGO}
 &height=200
 &width=425
 
-&bgcolor=ffffff
-&fgcolor=000000
+&bgcolor=000000
+&fgcolor=ffffff
 
 &hideLegend=True
 
