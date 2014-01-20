@@ -4,13 +4,19 @@ format_dict = {
     'HOWLONGAGO': '6weeks',
     'TIMEBUCKET': '12hours',
     'MOVINGAVGPERIOD': '10days',
-    'SUCCESS,FAILURE': '{SUCCESS,FAILURE}'
+    'SUCCESS,FAILURE': '{SUCCESS,FAILURE}',
+    'SIMPLETIMEBUCKET': '18hours',
+    'SIMPLEHOWLONGAGO': '3weeks',
+    'SIMPLEMOVINGAVGPERIOD': '5days',
 }
 
 
 error_url = ''.join(x.strip() for x in open('graph_template').readlines())
 error_url = error_url.replace(' ', '%20')
 error_url = error_url.format(**format_dict)
+simple_graph_url = ''.join(x.strip() for x in open('simple_graph_template').readlines())
+simple_graph_url = simple_graph_url.replace(' ', '%20')
+simple_graph_url = simple_graph_url.format(**format_dict)
 swift_error_url = ''.join(x.strip() for x in open('swift_graph_template').readlines())
 swift_error_url = swift_error_url.replace(' ', '%20')
 swift_error_url = swift_error_url.format(**format_dict)
@@ -122,6 +128,9 @@ common_page = '''
 
 with open('gate_status.html', 'wb') as f:
     f.write(common_page)
+
+with open('simple_graph_url', 'wb') as f:
+    f.write(simple_graph_url)
 
 all_page = '''
 <html><head><title>Gate Success Rate</title></head>
