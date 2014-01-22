@@ -38,9 +38,6 @@ from=midnight-{SIMPLEHOWLONGAGO}
 
 &fontSize=10
 
-&vtitleRight=Success Rate
-&vtitle=Gate Queue Depth
-
 &title=Recent Gate Success Rates
 
 &target=
