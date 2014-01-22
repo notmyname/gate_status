@@ -7,7 +7,7 @@ format_dict = {
     'SUCCESS,FAILURE': '{SUCCESS,FAILURE}',
     'SIMPLETIMEBUCKET': '24hours',
     'SIMPLEHOWLONGAGO': '3weeks',
-    'SIMPLEMOVINGAVGPERIOD': '5days',
+    'SIMPLEMOVINGAVGPERIOD': '3weeks',
 }
 
 
