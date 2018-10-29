@@ -1,9 +1,9 @@
 import urllib
 
 format_dict = {
-    'HOWLONGAGO': '6weeks',
-    'TIMEBUCKET': '12hours',
-    'MOVINGAVGPERIOD': '10days',
+    'HOWLONGAGO': '10months',
+    'TIMEBUCKET': '36hours',
+    'MOVINGAVGPERIOD': '30days',
     'SUCCESS,FAILURE': '{SUCCESS,FAILURE}',
     'SIMPLETIMEBUCKET': '24hours',
     'SIMPLEHOWLONGAGO': '3weeks',
@@ -44,6 +44,7 @@ keystone_graph_url = keystone_graph_url.format(**format_dict)
 
 msg = '''
 <h3>Explanation</h3>
+<p>THIS IS OUT OF DATE</p>
 <p>
 The purpose of these graphs are to report what's been going on and to give
 OpenStack contributors a narrow time window in which to look for errors.
@@ -160,95 +161,10 @@ swift_page = '''
 <body style="width: 80%%">
 <center>
 <img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
 </center>
 <div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, swift_error_url, recheck_graph_url, msg)
+''' % (swift_error_url, msg)
 
 with open('swift_gate_status.html', 'wb') as f:
     f.write(swift_page)
 
-neutron = '''
-<html><head><title>Gate Success Rate</title></head>
-<body style="width: 80%%">
-<center>
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-</center>
-<div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, neutron_graph_url, recheck_graph_url, msg)
-
-with open('neutron_gate_status.html', 'wb') as f:
-    f.write(neutron)
-
-nova = '''
-<html><head><title>Gate Success Rate</title></head>
-<body style="width: 80%%">
-<center>
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-</center>
-<div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, nova_graph_url, recheck_graph_url, msg)
-
-with open('nova_gate_status.html', 'wb') as f:
-    f.write(nova)
-
-solum = '''
-<html><head><title>Gate Success Rate</title></head>
-<body style="width: 80%%">
-<center>
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-</center>
-<div style="margin: 0 10%%;">%s</div></body></html>
-''' % (solum_graph_url, recheck_graph_url, msg)
-
-with open('solum_gate_status.html', 'wb') as f:
-    f.write(solum)
-
-
-cinder = '''
-<html><head><title>Gate Success Rate</title></head>
-<body style="width: 80%%">
-<center>
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-</center>
-<div style="margin: 0 10%%;">%s</div></body></html>
-''' % (error_url, cinder_graph_url, recheck_graph_url, msg)
-
-with open('cinder_gate_status.html', 'wb') as f:
-    f.write(cinder)
-
-
-marconi = '''
-<html><head><title>Gate Success Rate</title></head>
-<body style="width: 80%%">
-<center>
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-</center>
-<div style="margin: 0 10%%;">%s</div></body></html>
-''' % (marconi_graph_url, recheck_graph_url, msg)
-
-with open('marconi_gate_status.html', 'wb') as f:
-    f.write(marconi)
-
-
-keystone = '''
-<html><head><title>Gate Success Rate</title></head>
-<body style="width: 80%%">
-<center>
-<img style="margin: 0 auto;" src="%s"><br />
-<img style="margin: 0 auto;" src="%s"><br />
-</center>
-<div style="margin: 0 10%%;">%s</div></body></html>
-''' % (keystone_graph_url, recheck_graph_url, msg)
-
-with open('keystone_gate_status.html', 'wb') as f:
-    f.write(keystone)

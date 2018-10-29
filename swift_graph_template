@@ -45,7 +45,7 @@ from=midnight-{HOWLONGAGO}
 color(
     alias(
         smartSummarize(
-            stats.gauges.zuul.pipeline.gate.current_changes,
+            stats.gauges.zuul.tenant.openstack.pipeline.gate.current_changes,
             '{TIMEBUCKET}','avg'
         ),
         'Gate Depth'
@@ -61,25 +61,87 @@ cactiStyle(color(
             asPercent(
                 transformNull(
                     multiplySeries(
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-domain-remap-staticweb.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-domain-remap-staticweb.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-ec.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-ec.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-encryption.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-encryption.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-s3api.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-s3api.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py27.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py27.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py35.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py35.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-probetests-centos-7.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-probetests-centos-7.{SUCCESS,FAILURE})
+                        ),'{MOVINGAVGPERIOD}'),1)
+                    )
+                ),
+                1
+            ),
+            2
+        )),
+        'Patch Pass Chance Moving Avg'
+    ),
+    'orange'
+))
+
+&target=
+cactiStyle(color(
+    alias(
+        secondYAxis(lineWidth(
+            asPercent(
+                transformNull(
+                    multiplySeries(
                         transformNull(smartSummarize(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-swift-docs.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-swift-docs.{SUCCESS,FAILURE})
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-domain-remap-staticweb.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-domain-remap-staticweb.{SUCCESS,FAILURE})
                         ),'{TIMEBUCKET}','avg'),1),
                         transformNull(smartSummarize(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-swift-pep8.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-swift-pep8.{SUCCESS,FAILURE})
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func.{SUCCESS,FAILURE})
                         ),'{TIMEBUCKET}','avg'),1),
                         transformNull(smartSummarize(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-swift-python26.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-swift-python26.{SUCCESS,FAILURE})
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-ec.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-ec.{SUCCESS,FAILURE})
                         ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-encryption.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-encryption.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}'),1),
                         transformNull(smartSummarize(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-swift-python27.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-swift-python27.{SUCCESS,FAILURE})
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-s3api.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-func-s3api.{SUCCESS,FAILURE})
                         ),'{TIMEBUCKET}','avg'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py27.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py27.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}'),1),
+                        transformNull(movingAverage(divideSeries(
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py35.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-tox-py35.{SUCCESS,FAILURE})
+                        ),'{TIMEBUCKET}'),1),
                         transformNull(smartSummarize(divideSeries(
-                            stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.SUCCESS,
-                            sum(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.{SUCCESS,FAILURE})
+                            stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-probetests-centos-7.SUCCESS,
+                            sum(stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.openstack_swift.master.job.swift-probetests-centos-7.{SUCCESS,FAILURE})
                         ),'{TIMEBUCKET}','avg'),1)
                     )
                 ),
@@ -87,82 +149,7 @@ cactiStyle(color(
             ),
             3
         )),
-        'Swift Gate Jobs Chance'
+        'Patch Pass Chance'
     ),
     'ff0000'
 ))
-
-&target=
-color(
-    alias(
-        secondYAxis(smartSummarize(
-            asPercent(
-                stats.zuul.pipeline.gate.job.gate-swift-docs.SUCCESS,
-                sum(stats.zuul.pipeline.gate.job.gate-swift-docs.{SUCCESS,FAILURE})
-            ),
-            '{TIMEBUCKET}','avg'
-        )),
-        'gate-swift-docs'
-    ),
-    'blue'
-)
-
-&target=
-color(
-    alias(
-        secondYAxis(smartSummarize(
-            asPercent(
-                stats.zuul.pipeline.gate.job.gate-swift-pep8.SUCCESS,
-                sum(stats.zuul.pipeline.gate.job.gate-swift-pep8.{SUCCESS,FAILURE})
-            ),
-            '{TIMEBUCKET}','avg'
-        )),
-        'gate-swift-pep8'
-    ),
-    'green'
-)
-
-&target=
-color(
-    alias(
-        secondYAxis(smartSummarize(
-            asPercent(
-                stats.zuul.pipeline.gate.job.gate-swift-python26.SUCCESS,
-                sum(stats.zuul.pipeline.gate.job.gate-swift-python26.{SUCCESS,FAILURE})
-            ),
-            '{TIMEBUCKET}','avg'
-        )),
-        'gate-swift-python26'
-    ),
-    'pink'
-)
-
-&target=
-color(
-    alias(
-        secondYAxis(smartSummarize(
-            asPercent(
-                stats.zuul.pipeline.gate.job.gate-swift-python27.SUCCESS,
-                sum(stats.zuul.pipeline.gate.job.gate-swift-python27.{SUCCESS,FAILURE})
-            ),
-            '{TIMEBUCKET}','avg'
-        )),
-        'gate-swift-python27'
-    ),
-    'purple'
-)
-
-&target=
-color(
-    alias(
-        secondYAxis(smartSummarize(
-            asPercent(
-                stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.SUCCESS,
-                sum(stats.zuul.pipeline.gate.job.gate-swift-dsvm-functional.{SUCCESS,FAILURE})
-            ),
-            '{TIMEBUCKET}','avg'
-        )),
-        'gate-swift-dsvm-functional'
-    ),
-    'brown'
-)

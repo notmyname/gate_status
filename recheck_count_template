@@ -35,14 +35,14 @@ cactiStyle(color(
             hitcount(
                 sumSeries(
                     scale(
-                        stats.zuul.pipeline.gate.job.gate-*-pep8.{SUCCESS,FAILURE},
+                        stats.zuul.tenant.openstack.pipeline.gate.project.git_openstack_org.*.master.job.openstack-tox-pep8.{SUCCESS,FAILURE},
                         0.5
                     )
                 ),
                 '{TIMEBUCKET}',alignToInterval=true
             ),
             hitcount(
-                stats.gerrit.event.change-merged,
+                stats.zuul.event.gerrit.change-merged,
                 '{TIMEBUCKET}',alignToInterval=true
             )
         ),
